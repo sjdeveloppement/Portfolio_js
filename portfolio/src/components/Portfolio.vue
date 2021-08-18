@@ -1,0 +1,309 @@
+<template>
+  <v-app>
+    <div id="allApp">
+      <video autoplay loop muted id="bg-video">
+        <source src="../assets/Particle.mp4" type="video/mp4" />
+      </video>
+      <v-card elevation="15" class="card-portfolio ma-6">
+        <v-card-title class="card-title"><h1>WEB DEVELOPER</h1></v-card-title>
+
+        <v-navigation-drawer permanent expand-on-hover id="menu">
+          <v-list>
+            <v-list-item class="px-2">
+              <v-list-item-avatar>
+                <v-img src="../assets/photojahan.jpg"></v-img>
+              </v-list-item-avatar>
+            </v-list-item>
+
+            <v-list-item link>
+              <v-list-item-content>
+                <v-list-item-title class="text-h6">
+                  Jahân Serra
+                </v-list-item-title>
+                <v-list-item-subtitle>SJ</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+
+          <v-divider></v-divider>
+
+          <v-list nav dense>
+            <v-list-item link>
+              <v-list-item-icon>
+                <v-icon>mdi-folder</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title
+                ><a style="color: black" href="/#project"
+                  >My Project</a
+                ></v-list-item-title
+              >
+            </v-list-item>
+            <v-list-item link>
+              <v-list-item-icon>
+                <v-icon>mdi-account-multiple</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title
+                ><a style="color: black" href="/#contact"
+                  >Contact</a
+                ></v-list-item-title
+              >
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+        <!-- chips -->
+        <template
+          ><div class="text-center chips">
+            <v-chip class="ma-2 chips-lays" color="grey darken-4" outlined>
+              <v-icon left> mdi-wrench </v-icon>
+              Coding </v-chip
+            ><v-chip class="ma-2 chips-lays" color="grey darken-4" outlined>
+              <v-icon left> mdi-wrench </v-icon>
+              Design
+            </v-chip>
+            <v-chip class="ma-2 chips-lays" color="grey darken-4" outlined>
+              <v-icon left> mdi-fire </v-icon>
+              SEO
+            </v-chip>
+            <v-chip class="ma-2 chips-lays" color="grey darken-4" outlined>
+              <v-icon left> mdi-account-outline </v-icon>
+              Teamwork
+            </v-chip>
+          </div></template
+        >
+        <!-- intro subtitle card -->
+        <v-card-subtitle class="card-subtitle"
+          >Junior fullstack Web Developper with expericence in<br />
+          developing interfaces for web app, eCommerce and database sql and
+          noSql. <br />
+          Knowledge in SEO and Graphic design.
+        </v-card-subtitle>
+        <!-- test grid -->
+
+        <v-row id="project">
+          <v-col
+            v-for="(asset, index) in assets"
+            :key="index"
+            class="d-flex child-flex"
+            cols="4"
+          >
+            <v-hover v-slot="{ hover }">
+              <v-img
+                :src="asset.src"
+                aspect-ratio="1"
+                class="grey lighten-2 grid-img"
+                @click="
+                  checkActive(asset, index),
+                    (window.location.href = `${this.selectedasset.url}`)
+                "
+              >
+                <v-btn
+                  v-for="(icon, index) in icons"
+                  :key="index"
+                  :class="{ 'show-btns': hover }"
+                  :color="transparent"
+                  icon
+                  ><v-icon
+                    :class="{ 'show-btns': hover }"
+                    :color="transparent"
+                    @click="checkActive(icon, index)"
+                  >
+                    {{ icon }}
+                  </v-icon></v-btn
+                >
+              </v-img>
+            </v-hover>
+          </v-col>
+        </v-row>
+        <!-- fin test grid -->
+      </v-card>
+      <!-- Contact -->
+      <v-row justify="space-around" id="contact">
+        <v-col cols="auto">
+          <v-dialog transition="dialog-top-transition" max-width="600">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="#fb6d45" v-bind="attrs" v-on="on">Contact</v-btn>
+            </template>
+            <template v-slot:default="dialog">
+              <v-card>
+                <v-toolbar color="#fb6d45" dark
+                  >Let's talk about your project</v-toolbar
+                >
+                <v-card-text>
+                  <div class="pa-6">
+                    <v-icon x-large>mdi-email</v-icon
+                    ><a href="mailto:jahan.serra@gmail.com" style="color: grey"
+                      >jahan.serra@gmail.com</a
+                    >
+                  </div>
+                  <div class="pa-6">
+                    <a
+                      style="color: grey"
+                      href="https://www.linkedin.com/in/jahan-serra-a58152125/"
+                      ><i class="fab fa-3x fa-linkedin"></i>Linkedin</a
+                    >
+                  </div>
+                  <div class="pa-6">
+                    <a
+                      style="color: grey"
+                      href="https://github.com/sjdeveloppement"
+                      ><i class="fab fa-3x fa-github"></i>Github</a
+                    >
+                  </div>
+                </v-card-text>
+                <v-card-actions class="justify-end">
+                  <v-btn text @click="dialog.value = false">Close</v-btn>
+                </v-card-actions>
+              </v-card>
+            </template>
+          </v-dialog>
+        </v-col>
+      </v-row>
+      <!-- fin contact -->
+    </div>
+  </v-app>
+</template>
+<script>
+export default {
+  name: "Portfolio",
+  data() {
+    return {
+      indexClicked: undefined,
+      selectedItem: null,
+      transparent: "rgba(255, 255, 255, 0)",
+      icons: ["mdi-eye"],
+      assets: [
+        {
+          id: 1,
+          title: "project 1",
+          src: require("../assets/logo.png"),
+          url: "https://www.youtube.com/watch?v=oJuP-4Hsvkg",
+        },
+        {
+          id: 2,
+          title: "project 2",
+          src: require("../assets/logo.svg"),
+          url: "https://w5.foxdsgn.com/niko/modern/",
+        },
+        {
+          id: 3,
+          title: "project 3",
+          src: require("../assets/logo.png"),
+          url: "#",
+        },
+        {
+          id: 4,
+          title: "project 4",
+          src: require("../assets/logo.svg"),
+          url: "#",
+        },
+        {
+          id: 5,
+          title: "project 5",
+          src: require("../assets/logo.png"),
+          url: "#",
+        },
+        {
+          id: 6,
+          title: "project 6",
+          src: require("../assets/logo.svg"),
+          url: "#",
+        },
+      ],
+    };
+  },
+  methods: {
+    checkActive(asset, index) {
+      this.indexClicked = index;
+      this.selectedasset = asset;
+      console.log(this.selectedasset.url);
+    },
+  },
+};
+</script>
+<style scoped>
+.card-portfolio {
+  background: rgb(69, 54, 77);
+  background: linear-gradient(
+    0deg,
+    rgba(69, 54, 77, 0.9444152661064426) 0%,
+    rgba(84, 58, 76, 1) 12%,
+    rgba(123, 70, 74, 1) 47%,
+    rgba(252, 109, 69, 0.7494572829131652) 100%
+  );
+}
+
+.card-title {
+  position: absolute;
+  left: 3%;
+}
+#menu {
+  position: relative;
+  z-index: 1;
+}
+.chips {
+  position: absolute;
+  margin-top: -11%;
+  margin-left: 4%;
+}
+.chips-lays {
+  box-shadow: 1px 1px 1px 0px #000000;
+}
+.grid-img {
+  box-shadow: 3px 3px 10px 3px #000000;
+  opacity: 0.8;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+.grid-img:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.showInfoProject {
+  position: absolute;
+  background: chartreuse;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+a {
+  text-decoration: none;
+}
+.show-btns {
+  color: rgba(252, 109, 69, 0.7494572829131652) !important;
+}
+.card-subtitle {
+  font-size: larger;
+  margin-left: 50px;
+  margin-top: -97px;
+  position: relative;
+  z-index: 0;
+  font-style: oblique;
+}
+
+#bg-video {
+  position: fixed;
+  z-index: 0;
+}
+@media (min-aspect-ratio: 16/9) {
+  #bg-video {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  #bg-video {
+    width: auto;
+    height: 100%;
+  }
+}
+@media (max-width: 767px) {
+  #bg-video {
+    display: none;
+  }
+  body {
+    background-image: url("../assets/photojahan.jpg");
+    background-size: cover;
+  }
+}
+</style>
