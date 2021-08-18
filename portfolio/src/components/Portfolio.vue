@@ -87,30 +87,29 @@
             cols="4"
           >
             <v-hover v-slot="{ hover }">
-              <v-img
-                :src="asset.src"
-                aspect-ratio="1"
-                class="grey lighten-2 grid-img"
-                @click="
-                  checkActive(asset, index),
-                    (window.location.href = `${this.selectedasset.url}`)
-                "
-              >
-                <v-btn
-                  v-for="(icon, index) in icons"
-                  :key="index"
-                  :class="{ 'show-btns': hover }"
-                  :color="transparent"
-                  icon
-                  ><v-icon
+              <a :href="asset.url">
+                <v-img
+                  :src="asset.src"
+                  aspect-ratio="1"
+                  class="grey lighten-2 grid-img"
+                  @click="checkActive(asset, index)"
+                >
+                  <v-btn
+                    v-for="(icon, index) in icons"
+                    :key="index"
                     :class="{ 'show-btns': hover }"
                     :color="transparent"
-                    @click="checkActive(icon, index)"
+                    icon
+                    ><v-icon
+                      :class="{ 'show-btns': hover }"
+                      :color="transparent"
+                      @click="checkActive(icon, index)"
+                    >
+                      {{ icon }}
+                    </v-icon></v-btn
                   >
-                    {{ icon }}
-                  </v-icon></v-btn
-                >
-              </v-img>
+                </v-img></a
+              >
             </v-hover>
           </v-col>
         </v-row>
@@ -131,15 +130,15 @@
                 <v-card-text>
                   <div class="pa-6">
                     <v-icon x-large>mdi-email</v-icon
-                    ><a href="mailto:jahan.serra@gmail.com" style="color: grey"
-                      >jahan.serra@gmail.com</a
+                    ><a href="mailto:jahan.serra@gmail.com" style="color: grey">
+                      jahan.serra@gmail.com</a
                     >
                   </div>
                   <div class="pa-6">
                     <a
                       style="color: grey"
                       href="https://www.linkedin.com/in/jahan-serra-a58152125/"
-                      ><i class="fab fa-3x fa-linkedin"></i>Linkedin</a
+                      ><i class="fab fa-3x fa-linkedin"></i> Linkedin</a
                     >
                   </div>
                   <div class="pa-6">
@@ -215,7 +214,10 @@ export default {
     checkActive(asset, index) {
       this.indexClicked = index;
       this.selectedasset = asset;
-      console.log(this.selectedasset.url);
+      //console.log(this.selectedasset.url);
+    },
+    goToProject() {
+      window.location(this.selectedasset.url);
     },
   },
 };
