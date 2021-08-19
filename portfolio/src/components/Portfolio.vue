@@ -108,8 +108,15 @@
                       {{ icon }}
                     </v-icon></v-btn
                   >
-                </v-img></a
-              >
+                  <h3 v-html="asset.title" id="project_titles"></h3>
+                  <div v-if="hover" id="icon-language">
+                    <v-icon v-html="asset.language[0]"></v-icon
+                    ><v-icon v-html="asset.language[1]"></v-icon
+                    ><v-icon v-html="asset.language[2]"></v-icon
+                    ><v-icon v-html="asset.language[3]"></v-icon>
+                    <v-icon v-html="asset.language[4]"></v-icon>
+                  </div> </v-img
+              ></a>
             </v-hover>
           </v-col>
         </v-row>
@@ -176,36 +183,70 @@ export default {
           title: "Groupomania media social d'entreprise",
           src: require("../assets/logo_groupomania.png"),
           url: "https://mygroupomania.web.app/sign-in",
+          language: [
+            "mdi-vuejs",
+            "mdi-vuetify",
+            "fab fa-html5",
+            "fab fa-css3-alt",
+            "fab fa-node-js",
+          ],
         },
         {
           id: 2,
-          title: "So pekocko / piquante l'application qui note vos sauces aux piments préférées !",
+          title:
+            "So pekocko / piquante l'application qui note vos sauces aux piments préférées !",
           src: require("../assets/Sopekocko.gif"),
           url: "https://github.com/sjdeveloppement/backend",
+          language: ["fab fa-node-js"],
         },
         {
           id: 3,
           title: "Orinoco site e-commerce",
           src: require("../assets/orinocam.jpg"),
           url: "https://sjdeveloppement.github.io/jahanSerra_5_09032021/index.html",
+          language: ["fab fa-html5", "fab fa-css3-alt","fab fa-js"],
         },
         {
           id: 4,
           title: "La chouette agence  refonte d'un site vitrine",
           src: require("../assets/chouetteAgence.svg"),
           url: "https://sjdeveloppement.github.io/jahanSerra_4_03032021/",
+          language: ["fab fa-html5", "fab fa-css3-alt"],
         },
         {
           id: 5,
           title: "Ohmyfood reservez le menu qui vous convient",
           src: require("../assets/ohmyfood@2x.svg"),
           url: "https://sjdeveloppement.github.io/jahanSerra_3_23022021/",
+          language: ["fab fa-html5", "fab fa-css3-alt"],
         },
         {
           id: 6,
-          title: "project 6",
+          title: "Reservia site vitrine",
           src: require("../assets/Reservia.svg"),
           url: "https://sjdeveloppement.github.io/JahanSerra_2_06022020/",
+          language: ["fab fa-html5", "fab fa-css3-alt"],
+        },
+        {
+          id: 7,
+          title: "SJdeveloppement site vitrine",
+          src: require("../assets/Logo_Sjdevsvg.svg"),
+          url: "https://sjdeveloppement.com/",
+          language: ["fab fa-wordpress"],
+        },
+        {
+          id: 8,
+          title: "Hérault Sport maquette interactive site vitrine",
+          src: require("../assets/RefontesiteHS.jpg"),
+          url: "https://jahan.sereneorpatrimoine.fr/herault-sport",
+          language: ["fab fa-wordpress"],
+        },
+        {
+          id: 9,
+          title: "Ancien portfolio",
+          src: require("../assets/jahan.jpg"),
+          url: "http://jahan.serra.free.fr/",
+          language: ["fab fa-html5", "fab fa-css3-alt"],
         },
       ],
     };
@@ -253,11 +294,12 @@ export default {
 .grid-img {
   box-shadow: 3px 3px 10px 3px #000000;
   opacity: 0.8;
-  
 }
 .grid-img:hover {
   opacity: 1;
   cursor: pointer;
+  text-shadow: 2px 1px 2px #000000;
+  font-size: 18px;
 }
 
 a {
@@ -274,7 +316,16 @@ a {
   z-index: 0;
   font-style: oblique;
 }
-
+#project_titles {
+  color: #fc6c44;
+  text-align: center;
+  margin-top: 20px;
+}
+#icon-language {
+  text-shadow: none;
+  text-align:center;
+  margin-top: 65%;
+}
 #bg-video {
   position: fixed;
   z-index: 0;
@@ -298,11 +349,9 @@ a {
   body {
     background-image: url("../assets/photojahan.jpg");
     background-size: cover;
-   
   }
-  #allApp{
+  #allApp {
     background-color: rgba(252, 109, 69, 0.7494572829131652);
   }
-  
 }
 </style>
