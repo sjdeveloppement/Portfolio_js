@@ -173,39 +173,39 @@ export default {
       assets: [
         {
           id: 1,
-          title: "project 1",
-          src: require("../assets/logo.png"),
-          url: "https://www.youtube.com/watch?v=oJuP-4Hsvkg",
+          title: "Groupomania media social d'entreprise",
+          src: require("../assets/logo_groupomania.png"),
+          url: "https://mygroupomania.web.app/sign-in",
         },
         {
           id: 2,
-          title: "project 2",
-          src: require("../assets/logo.svg"),
-          url: "https://w5.foxdsgn.com/niko/modern/",
+          title: "So pekocko / piquante l'application qui note vos sauces aux piments préférées !",
+          src: require("../assets/Sopekocko.gif"),
+          url: "https://github.com/sjdeveloppement/backend",
         },
         {
           id: 3,
-          title: "project 3",
-          src: require("../assets/logo.png"),
-          url: "#",
+          title: "Orinoco site e-commerce",
+          src: require("../assets/orinocam.jpg"),
+          url: "https://sjdeveloppement.github.io/jahanSerra_5_09032021/index.html",
         },
         {
           id: 4,
-          title: "project 4",
-          src: require("../assets/logo.svg"),
-          url: "#",
+          title: "La chouette agence  refonte d'un site vitrine",
+          src: require("../assets/chouetteAgence.svg"),
+          url: "https://sjdeveloppement.github.io/jahanSerra_4_03032021/",
         },
         {
           id: 5,
-          title: "project 5",
-          src: require("../assets/logo.png"),
-          url: "#",
+          title: "Ohmyfood reservez le menu qui vous convient",
+          src: require("../assets/ohmyfood@2x.svg"),
+          url: "https://sjdeveloppement.github.io/jahanSerra_3_23022021/",
         },
         {
           id: 6,
           title: "project 6",
-          src: require("../assets/logo.svg"),
-          url: "#",
+          src: require("../assets/Reservia.svg"),
+          url: "https://sjdeveloppement.github.io/JahanSerra_2_06022020/",
         },
       ],
     };
@@ -253,21 +253,13 @@ export default {
 .grid-img {
   box-shadow: 3px 3px 10px 3px #000000;
   opacity: 0.8;
-  transform-style: preserve-3d;
-  transition: all 0.5s ease;
+  
 }
 .grid-img:hover {
   opacity: 1;
   cursor: pointer;
 }
-.showInfoProject {
-  position: absolute;
-  background: chartreuse;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  transform: rotateY(180deg);
-}
+
 a {
   text-decoration: none;
 }
@@ -306,6 +298,11 @@ a {
   body {
     background-image: url("../assets/photojahan.jpg");
     background-size: cover;
+   
   }
+  #allApp{
+    background-color: rgba(252, 109, 69, 0.7494572829131652);
+  }
+  
 }
 </style>
