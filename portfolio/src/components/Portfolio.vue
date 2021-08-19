@@ -5,9 +5,15 @@
         <source src="../assets/Particle.mp4" type="video/mp4" />
       </video>
       <v-card elevation="15" class="card-portfolio ma-6">
-        <v-card-title class="card-title"><h1>WEB DEVELOPER</h1></v-card-title>
+        <v-card-title v-if="$vuetify.breakpoint.smAndUp" class="card-title"><h1>WEB DEVELOPER</h1></v-card-title>
+        <v-card-title v-if="$vuetify.breakpoint.xsOnly" class="card-title white--text"><h1 style="font-size: 16px; text-align:center;">JAHÂN SERRA <br> WEB DEVELOPER</h1></v-card-title>
 
-        <v-navigation-drawer permanent expand-on-hover id="menu">
+        <v-navigation-drawer
+          v-if="$vuetify.breakpoint.lgAndUp"
+          permanent
+          expand-on-hover
+          id="menu"
+        >
           <v-list>
             <v-list-item class="px-2">
               <v-list-item-avatar>
@@ -53,18 +59,45 @@
         <!-- chips -->
         <template
           ><div class="text-center chips">
-            <v-chip class="ma-2 chips-lays" color="grey darken-4" outlined>
+            <v-chip
+              v-if="$vuetify.breakpoint.smAndUp"
+              class="ma-2 chips-lays"
+              color="grey darken-4"
+              outlined
+            >
               <v-icon left> mdi-wrench </v-icon>
-              Coding </v-chip
-            ><v-chip class="ma-2 chips-lays" color="grey darken-4" outlined>
+              Coding
+            </v-chip>
+            <v-chip
+              v-if="$vuetify.breakpoint.xsOnly"
+              class="ma-2 chips-lays"
+              color="white darken-4"
+              outlined
+            >
+              <v-icon left> mdi-wrench </v-icon>
+              Coding
+            </v-chip>
+            <v-chip v-if="$vuetify.breakpoint.smAndUp" class="ma-2 chips-lays" color="grey darken-4" outlined>
               <v-icon left> mdi-wrench </v-icon>
               Design
             </v-chip>
-            <v-chip class="ma-2 chips-lays" color="grey darken-4" outlined>
+            <v-chip v-if="$vuetify.breakpoint.xsOnly" class="ma-2 chips-lays" color="white darken-4" outlined>
+              <v-icon left> mdi-wrench </v-icon>
+              Design
+            </v-chip>
+            <v-chip v-if="$vuetify.breakpoint.smAndUp" class="ma-2 chips-lays" color="grey darken-4" outlined>
               <v-icon left> mdi-fire </v-icon>
               SEO
             </v-chip>
-            <v-chip class="ma-2 chips-lays" color="grey darken-4" outlined>
+            <v-chip v-if="$vuetify.breakpoint.xsOnly" class="ma-2 chips-lays" color="white darken-4" outlined>
+              <v-icon left> mdi-fire </v-icon>
+              SEO
+            </v-chip>
+            <v-chip v-if="$vuetify.breakpoint.smAndUp" class="ma-2 chips-lays" color="grey darken-4" outlined>
+              <v-icon left> mdi-account-outline </v-icon>
+              Teamwork
+            </v-chip>
+            <v-chip v-if="$vuetify.breakpoint.xsOnly" class="ma-2 chips-lays" color="white darken-4" outlined>
               <v-icon left> mdi-account-outline </v-icon>
               Teamwork
             </v-chip>
@@ -79,7 +112,7 @@
         </v-card-subtitle>
         <!-- test grid -->
 
-        <v-row id="project">
+        <v-row v-if="$vuetify.breakpoint.smAndUp" id="project">
           <v-col
             v-for="(asset, index) in assets"
             :key="index"
@@ -108,7 +141,49 @@
                       {{ icon }}
                     </v-icon></v-btn
                   >
-                  <h3 v-html="asset.title" id="project_titles"></h3>
+                  <h3 v-if="$vuetify.breakpoint.mdAndUp" v-html="asset.title" id="project_titles"></h3>
+                  <div v-if="hover" id="icon-language">
+                    <v-icon v-html="asset.language[0]"></v-icon
+                    ><v-icon v-html="asset.language[1]"></v-icon
+                    ><v-icon v-html="asset.language[2]"></v-icon
+                    ><v-icon v-html="asset.language[3]"></v-icon>
+                    <v-icon v-html="asset.language[4]"></v-icon>
+                  </div> </v-img
+              ></a>
+            </v-hover>
+          </v-col>
+        </v-row>
+        <!-- grille sous mobile -->
+         <v-row v-if="$vuetify.breakpoint.xsOnly" id="project">
+          <v-col
+            v-for="(asset, index) in assets"
+            :key="index"
+            class="d-flex child-flex"
+            cols="12"
+          >
+            <v-hover v-slot="{ hover }">
+              <a :href="asset.url">
+                <v-img
+                  :src="asset.src"
+                  aspect-ratio="1"
+                  class="grey lighten-2 grid-img"
+                  @click="checkActive(asset, index)"
+                >
+                  <v-btn
+                    v-for="(icon, index) in icons"
+                    :key="index"
+                    :class="{ 'show-btns': hover }"
+                    :color="transparent"
+                    icon
+                    ><v-icon
+                      :class="{ 'show-btns': hover }"
+                      :color="transparent"
+                      @click="checkActive(icon, index)"
+                    >
+                      {{ icon }}
+                    </v-icon></v-btn
+                  >
+                  <h3 v-if="$vuetify.breakpoint.mdAndUp" v-html="asset.title" id="project_titles"></h3>
                   <div v-if="hover" id="icon-language">
                     <v-icon v-html="asset.language[0]"></v-icon
                     ><v-icon v-html="asset.language[1]"></v-icon
@@ -204,7 +279,7 @@ export default {
           title: "Orinoco site e-commerce",
           src: require("../assets/orinocam.jpg"),
           url: "https://sjdeveloppement.github.io/jahanSerra_5_09032021/index.html",
-          language: ["fab fa-html5", "fab fa-css3-alt","fab fa-js"],
+          language: ["fab fa-html5", "fab fa-css3-alt", "fab fa-js"],
         },
         {
           id: 4,
@@ -323,7 +398,7 @@ a {
 }
 #icon-language {
   text-shadow: none;
-  text-align:center;
+  text-align: center;
   margin-top: 65%;
 }
 #bg-video {
@@ -342,6 +417,7 @@ a {
     height: 100%;
   }
 }
+/* Responsive mobile*/
 @media (max-width: 767px) {
   #bg-video {
     display: none;
@@ -350,8 +426,46 @@ a {
     background-image: url("../assets/photojahan.jpg");
     background-size: cover;
   }
+  h1 {
+    margin-left: 50px;
+    font-size: 22px;
+  }
+  .card-title {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  .card-subtitle {
+    margin-top: 60px;
+    color: antiquewhite !important;
+  }
+  #project{
+    font-size: 8px;
+  }
   #allApp {
     background-color: rgba(252, 109, 69, 0.7494572829131652);
   }
+}
+@media (min-width: 768px) and (max-width: 1024px){
+  h1 {
+    margin-left: 50px;
+    font-size: 22px;
+    margin-top:30px
+  }
+  .card-title {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .card-subtitle {
+    margin-top: 5px;
+    color: antiquewhite !important;
+  }
+  #project{
+    font-size: 18px;
+  }
+  .chips {
+  position: absolute;
+  margin-top: -4%;
+  margin-left: 4%;
+}
 }
 </style>
