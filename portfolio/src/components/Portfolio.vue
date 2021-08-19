@@ -16,12 +16,12 @@
         >
           <v-list>
             <v-list-item class="px-2">
-              <v-list-item-avatar>
+              <v-list-item-avatar id="avatar" >
                 <v-img src="../assets/photojahan.jpg"></v-img>
               </v-list-item-avatar>
             </v-list-item>
 
-            <v-list-item link>
+            <v-list-item >
               <v-list-item-content>
                 <v-list-item-title class="text-h6">
                   Jahân Serra
@@ -312,7 +312,7 @@ export default {
         {
           id: 8,
           title: "Hérault Sport maquette interactive site vitrine",
-          src: require("../assets/RefontesiteHS.jpg"),
+          src: require("../assets/Herault_Sport_logo.svg"),
           url: "https://jahan.sereneorpatrimoine.fr/herault-sport",
           language: ["fab fa-wordpress"],
         },
@@ -404,6 +404,14 @@ a {
 #bg-video {
   position: fixed;
   z-index: 0;
+}
+#avatar:hover{
+  transform: scale(1.6) rotate(360deg) translateX(50%);
+  transition-duration: 1s ;
+  transition-timing-function: cubic-bezier(.29, 0.50, 0.15 , 0.68);
+  box-shadow: 2px 2px 3px#000000;
+  cursor: crosshair ;
+  
 }
 @media (min-aspect-ratio: 16/9) {
   #bg-video {
