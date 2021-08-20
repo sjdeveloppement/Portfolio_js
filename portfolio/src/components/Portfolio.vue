@@ -133,6 +133,7 @@
                     :class="{ 'show-btns': hover }"
                     :color="transparent"
                     icon
+                    aria-label="bouton oeil voir projet"
                     ><v-icon
                       :class="{ 'show-btns': hover }"
                       :color="transparent"
@@ -141,7 +142,7 @@
                       {{ icon }}
                     </v-icon></v-btn
                   >
-                  <h3 v-if="$vuetify.breakpoint.mdAndUp" v-html="asset.title" id="project_titles"></h3>
+                  <h2 v-if="$vuetify.breakpoint.mdAndUp" v-html="asset.title" id="project_titles"></h2>
                   <div v-if="hover" id="icon-language">
                     <v-icon v-html="asset.language[0]"></v-icon
                     ><v-icon v-html="asset.language[1]"></v-icon
@@ -175,6 +176,7 @@
                     :class="{ 'show-btns': hover }"
                     :color="transparent"
                     icon
+                    aria-label="bouton oeil voir projet"
                     ><v-icon
                       :class="{ 'show-btns': hover }"
                       :color="transparent"
@@ -183,7 +185,7 @@
                       {{ icon }}
                     </v-icon></v-btn
                   >
-                  <h3 v-if="$vuetify.breakpoint.mdAndUp" v-html="asset.title" id="project_titles"></h3>
+                  <h2 v-if="$vuetify.breakpoint.mdAndUp" v-html="asset.title" id="project_titles"></h2>
                   <div v-if="hover" id="icon-language">
                     <v-icon v-html="asset.language[0]"></v-icon
                     ><v-icon v-html="asset.language[1]"></v-icon
@@ -202,7 +204,7 @@
         <v-col cols="auto">
           <v-dialog transition="dialog-top-transition" max-width="600">
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="#fb6d45" v-bind="attrs" v-on="on">Contact</v-btn>
+              <v-btn color="#fb6d45" v-bind="attrs" v-on="on" aria-label="bouton contact">Contact</v-btn>
             </template>
             <template v-slot:default="dialog">
               <v-card>
@@ -232,7 +234,7 @@
                   </div>
                 </v-card-text>
                 <v-card-actions class="justify-end">
-                  <v-btn text @click="dialog.value = false">Close</v-btn>
+                  <v-btn text @click="dialog.value = false" aria-label="bouton fermer overlay contact">Close</v-btn>
                 </v-card-actions>
               </v-card>
             </template>
