@@ -315,8 +315,8 @@ export default {
           id: 8,
           title: "Hérault Sport maquette interactive site vitrine",
           src: require("../assets/Herault_Sport_logo.svg"),
-          url: "https://jahan.sereneorpatrimoine.fr/herault-sport",
-          language: ["fab fa-wordpress"],
+          url: "https://www.figma.com/proto/4xJ1vkfKTjzOJBMkJX755H/H%C3%A9rault-Sport?node-id=129%3A1063&scaling=min-zoom&page-id=129%3A54&starting-point-node-id=129%3A1063",
+          language: ["fab fa-figma"],
         },
         {
           id: 9,
